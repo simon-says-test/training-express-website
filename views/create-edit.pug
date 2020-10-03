@@ -1,0 +1,25 @@
+extends layout.pug
+
+block header
+  title Create recipe
+
+block content
+  .py-3.text-center
+    h1.bd-title Create a recipe!
+  .row
+    .col-md-6
+      form.needs-validation(method='post')
+        .mb-3
+          label(for='title') Title
+          input.form-control(type='text' id='title' name='title')
+        .mb-3
+          label(for='short-description') Description
+          textarea.form-control(id='short-description' name='short_description' rows='3' columns='30')
+        .mb-3
+          label(for='recipe-steps') Recipe steps
+          textarea.form-control(id='recipe-steps' name='recipe_steps' rows='10' columns='30')
+        .mb-3
+          label(for='preparation-time') Preparation time
+          input.form-control(type='text' id='preparation-time' name='preparation_time')
+        input.btn.btn-primary.btn-lg.btn-block(type='submit', value='Save')
+    
