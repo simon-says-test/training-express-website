@@ -1,0 +1,19 @@
+extends layout.pug
+
+block header
+  title View recipe
+
+block content
+  .py-3.text-center
+    h2.bd-title #{recipe.title}
+  .row
+    .w-100
+      .mb-3
+        p(id='short-description' name='short_description') #{recipe.short_description}
+      .mb-3
+        p(id='preparation-time' name='preparation_time') Preparation time: #{recipe.preparation_time} minutes
+      .mb-3
+        h6 Instructions:
+        p(id='recipe-steps' name='recipe_steps') #{recipe.recipe_steps}
+      input.btn.btn-primary.btn-lg(value='Edit')
+    

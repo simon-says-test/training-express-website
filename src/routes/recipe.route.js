@@ -5,7 +5,7 @@ const { CustomException, NotFoundException } = require('../utils/errors');
 const router = express.Router();
 
 router.get('/create', async (req, res) => {
-  res.render('create-edit');
+  res.render('create');
 });
 
 router.post('/create', async (req, res, next) => {
@@ -38,9 +38,9 @@ router.get('/:id', async (req, res, next) => {
     if (!recipe) {
       throw new NotFoundException('recipe not found');
     }
-    res.send(recipe);
-  } catch (e) {
-    next(e);
+    res.render('view', recipe);
+  } catch (err) {
+    next(err);
   }
 });
 

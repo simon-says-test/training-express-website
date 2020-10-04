@@ -5,9 +5,12 @@ const { BadRequestException } = require('../utils/errors');
 const createRecipe = async (recipe) => {
   const response = await recipeConnector.createRecipe(recipe);
   const { lastID } = response.data;
-  const recipeSteps = recipe.recipe_steps.split(/[\r\n]+/).map((p, i) => {
-    return { step_number: i + 1, step_text: p };
-  });
+  const recipeSteps = recipe.recipe_steps
+    .split(/[\r\n]+/)
+    .map((p, i) => {
+      return { step_number: i + 1, step_text: p };
+    })
+    .filter((p) => !p.match(/\s*/));
   await recipeStepConnector.updateRecipeSteps(lastID, recipeSteps);
 };
 
@@ -18,7 +21,10 @@ const getRecipes = async (searchTerm) =>
     return { ...recipe, short_description: `${recipe.short_description.substring(0, 50)}...` };
   });
 
-const getRecipe = async (id) => recipeConnector.getRecipe(id);
+const getRecipe = async (id) => {
+  const recipe = await recipeConnector.getRecipe(id);
+  return { recipe: recipe.data };
+};
 
 const updateRecipe = async (id, recipe) => recipeConnector.updateRecipe(id, recipe);
 

@@ -10,7 +10,7 @@ const getRecipes = async (searchTerm) => {
   return axios.get(`http://localhost:3002/recipes${searchUrlPart}`);
 };
 
-const getRecipe = async (id) => {};
+const getRecipe = async (id) => axios.get(`http://localhost:3002/recipes/${id}`);
 
 const updateRecipe = async (id, recipe) => {};
 
