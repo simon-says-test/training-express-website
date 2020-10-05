@@ -1,6 +1,5 @@
 const recipeConnector = require('../connectors/recipe.connector');
 const recipeStepConnector = require('../connectors/recipe-step.connector');
-const { BadRequestException } = require('../utils/errors');
 
 const createRecipe = async (recipe) => {
   const response = await recipeConnector.createRecipe(recipe);

@@ -1,5 +1,8 @@
+// This module enables access to the data, sending HTTP requests to the API endpoint.
+// Axios is used to simplify the HTTP interactions. Very little logic is required but having
+// requests performed here, rather than in the controller, allows for easier testing.
+
 const axios = require('axios');
-const { BadRequestException } = require('../utils/errors');
 
 const createRecipe = async (recipe) => axios.post(`http://localhost:3002/recipes`, recipe);
 
