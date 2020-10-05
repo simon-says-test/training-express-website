@@ -1,5 +1,6 @@
+// There is currently no real logic in this module but input validation should go here
+
 const recipeStepConnector = require('../connectors/recipe-step.connector');
-const { BadRequestException } = require('../utils/errors');
 
 const createRecipeStep = async (recipeStep) => recipeStepConnector.createRecipeStep(recipeStep);
 
